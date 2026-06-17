@@ -1,24 +1,40 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background-primary: #EAE6E7;
+  --foreground: #110E10;
+
+  /* Micro — internal component spacing */
+  --space-1:  0.25rem;   /*  4px — icon gaps, tiny nudges */
+  --space-2:  0.5rem;    /*  8px — between label and input */
+  --space-3:  0.75rem;   /* 12px — tight button padding */
+  --space-4:  1rem;      /* 16px — base unit, nav link gaps */
+  --space-5:  1.25rem;   /* 20px — card inner padding small */
+  --space-6:  1.5rem;    /* 24px — card inner padding */
+  --space-8:  2rem;      /* 32px — between elements in a section */
+
+  /* Layout — between components and sections */
+  --space-10: 2.5rem;    /* 40px — grid gaps */
+  --space-12: 3rem;      /* 48px — section padding vertical */
+  --space-16: 4rem;      /* 64px — hero padding, large sections */
+  --space-20: 5rem;      /* 80px — between major page sections */
+  --space-24: 6rem;      /* 96px — generous section breathing room */
+  --space-32: 8rem;      /* 128px — hero vertical padding on desktop */
+
+  /* Max widths */
+  --max-width-content: 1200px;  /* main container */
+  --max-width-text:    680px;   /* readable prose */
+  --max-width-narrow:  480px;   /* forms, small panels */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-background: var(--background-primary);
 }
 
 body {
-  background: var(--background);
+  background: var(--background-primary);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Jost, Montserrat, Arial, Helvetica, sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
 }
