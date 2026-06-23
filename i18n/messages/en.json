@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "about": "About us",
+    "about_school": "About the school",
+    "about_instructors": "Instructors",
+    "about_skp": "Sports Dance Club",
+
+    "offer": "Offer",
+    "offer_kids": "Kids classes",
+    "offer_youth": "Youth classes",
+    "offer_adults": "Adult classes",
+    "offer_schedule": "Schedule",
+    "offer_pricing": "Pricing",
+    "offer_tips": "Tips",
+
+    "news": "News",
+    "gallery": "Gallery",
+    "faq": "FAQ",
+    "client_panel": "Client panel",
+    "contact": "Contact"
+  }
+}
