@@ -1,0 +1,22 @@
+{
+  "nav": {
+    "about": "O nas",
+    "about_school": "O szkole",
+    "about_instructors": "Instruktorzy",
+    "about_skp": "Sportowy Klub Taneczny",
+
+    "offer": "Oferta",
+    "offer_kids": "Zajęcia dla dzieci",
+    "offer_youth": "Zajęcia dla młodzieży",
+    "offer_adults": "Zajęcia dla dorosłych",
+    "offer_schedule": "Grafik",
+    "offer_pricing": "Cennik",
+    "offer_tips": "Wskazówki",
+
+    "news": "Aktualności",
+    "gallery": "Galeria",
+    "faq": "FAQ",
+    "client_panel": "Panel klienta",
+    "contact": "Kontakt"
+  }
+}
