@@ -1,0 +1,28 @@
+{
+  "common": {
+    "close": "Close",
+    "open": "Open"
+  },
+  "nav": {
+    "about": "About us",
+    "about_instructors": "Instructors",
+    "about_school": "About the school",
+    "about_skt": "Sports Dance Club",
+    "client_panel": "Client panel",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "gallery": "Gallery",
+    "home": "Home",
+    "logo_alt": "Alchemia Dance Studio Wrzesnia Logo",
+    "news": "News",
+    "offer": "Offer",
+    "offer_adults": "Adult classes",
+    "offer_kids": "Kids classes",
+    "offer_pricing": "Pricing",
+    "offer_schedule": "Schedule",
+    "offer_tips": "Tips before class",
+    "offer_youth": "Youth classes",
+    "signup": "Sign Up",
+    "signupNow": "Sign Up"
+  }
+}

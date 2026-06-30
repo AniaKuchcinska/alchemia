@@ -1,0 +1,257 @@
+/* ── HAMBURGER BUTTON ── */
+.button {
+    background: transparent;
+    border: none;
+    padding: var(--space-2);
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+
+    border-radius: 4px;
+    transition: background-color var(--duration-fast) var(--ease-default);
+}
+
+.button:hover {
+    background-color: var(--accent-subtle);
+}
+
+.button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+/* ── DIALOG OVERLAY ── */
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(26, 24, 32, 0.3);
+    animation: overlayIn var(--duration-base) var(--ease-default);
+}
+
+@keyframes overlayIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* ── DIALOG CONTENT ── */
+.content {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 201;
+    background: var(--background-primary);
+    border-bottom: 1px solid var(--border-default);
+    box-shadow: 0 4px 32px rgba(26, 24, 32, 0.12);
+    animation: slideDown var(--duration-slow) var(--ease-default);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.content[data-state="closed"] {
+    animation: slideUp var(--duration-base) var(--ease-default);
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
+}
+
+/* ── HEADER ROW when dialog/menu open ── */
+.dialogHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-6);
+    height: var(--nav-height);
+    border-bottom: 1px solid var(--border-default);
+}
+
+.dialogLogo {
+    display: flex;
+    align-items: center;
+}
+
+/* ── NAV ── */
+.nav {
+    padding: var(--space-4) 0 var(--space-6);
+    overflow-y: auto;
+    max-height: calc(100dvh - var(--nav-height));
+}
+
+/* ── ACCORDION ── */
+.accordion {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── DIRECT LINKS (page + external) ── */
+.link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-4) var(--space-6);
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition:
+            color var(--duration-fast) var(--ease-default),
+            border-color var(--duration-fast) var(--ease-default),
+            background-color var(--duration-fast) var(--ease-default);
+}
+
+.link:hover {
+    color: var(--accent);
+    background-color: var(--accent-subtle);
+    border-left-color: var(--accent);
+}
+
+/* Active state — current page */
+.link[data-active="true"] {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    font-weight: 500;
+}
+
+.externalIcon {
+    width: 14px;
+    height: 14px;
+    color: var(--text-secondary);
+}
+
+/* ── ACCORDION ITEM ── */
+.accordionItem {
+    border-bottom: 1px solid var(--border-default);
+}
+
+.accordionItem:last-child {
+    border-bottom: none;
+}
+
+/* ── ACCORDION TRIGGER ── */
+.accordionTrigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-4) var(--space-6);
+
+    background: transparent;
+    border: none;
+    border-left: 2px solid transparent;
+    cursor: pointer;
+
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-align: left;
+
+    transition:
+            color var(--duration-fast) var(--ease-default),
+            border-color var(--duration-fast) var(--ease-default),
+            background-color var(--duration-fast) var(--ease-default);
+}
+
+.accordionTrigger:hover {
+    color: var(--accent);
+    background-color: var(--accent-subtle);
+    border-left-color: var(--accent);
+}
+
+.accordionTrigger[data-state="open"] {
+    color: var(--accent);
+    border-left-color: var(--accent);
+}
+
+.chevron {
+    width: 16px;
+    height: 16px;
+    color: var(--text-secondary);
+    transition: transform var(--duration-base) var(--ease-default);
+    flex-shrink: 0;
+}
+
+.accordionTrigger[data-state="open"] .chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+}
+
+/* ── ACCORDION CONTENT ── */
+.accordionContent {
+    overflow: hidden;
+}
+
+.accordionContent[data-state="open"] {
+    animation: accordionOpen var(--duration-base) var(--ease-default);
+}
+
+.accordionContent[data-state="closed"] {
+    animation: accordionClose var(--duration-fast) var(--ease-default);
+}
+
+@keyframes accordionOpen {
+    from { height: 0; opacity: 0; }
+    to   { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+
+@keyframes accordionClose {
+    from { height: var(--radix-accordion-content-height); opacity: 1; }
+    to   { height: 0; opacity: 0; }
+}
+
+.accordionInner {
+    background: var(--background-secondary);
+    padding: var(--space-2) 0;
+}
+
+/* ── CHILD LINKS inside accordion ── */
+.childLink {
+    display: block;
+    padding: var(--space-3) var(--space-6) var(--space-3) var(--space-10);
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--text-secondary);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition:
+            color var(--duration-fast) var(--ease-default),
+            border-color var(--duration-fast) var(--ease-default),
+            background-color var(--duration-fast) var(--ease-default);
+}
+
+.childLink:hover {
+    color: var(--accent);
+    background-color: var(--accent-subtle);
+    border-left-color: var(--accent);
+}
+
+.childLink[data-active="true"] {
+    color: var(--accent);
+    border-left-color: var(--accent);
+    font-weight: 500;
+}

@@ -1,0 +1,28 @@
+{
+  "common": {
+    "close": "Zamknij",
+    "open": "Otwórz"
+  },
+  "nav": {
+    "about": "O nas",
+    "about_instructors": "Instruktorzy",
+    "about_school": "O szkole",
+    "about_skt": "Sportowy Klub Taneczny",
+    "client_panel": "Panel klienta",
+    "contact": "Kontakt",
+    "faq": "FAQ",
+    "gallery": "Galeria",
+    "home": "Strona główna",
+    "logo_alt": "Alchemia Dance Studio Września Logo",
+    "news": "Aktualności",
+    "offer": "Oferta",
+    "offer_adults": "Zajęcia dla dorosłych",
+    "offer_kids": "Zajęcia dla dzieci",
+    "offer_pricing": "Cennik",
+    "offer_schedule": "Grafik",
+    "offer_tips": "Wskazówki przed zajęciami",
+    "offer_youth": "Zajęcia dla młodzieży",
+    "signup": "Zapisy",
+    "signupNow": "Zapisz się"
+  }
+}

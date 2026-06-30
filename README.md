@@ -1,3 +1,12 @@
+Next.js 14+ (App Router)
+TypeScript
+CSS Modules (all styling)
+CSS custom properties (design tokens)
+Radix UI (navigation, gallery lightbox, any accordions)
+Sanity (posts + banner)
+Vercel
+Resend (contact form)
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
