@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import styles from "./DesktopNav.module.css";
-import SectionDropdown from "@/app/components/navigation/SectionDropdown";
+import SectionItem from "@/app/components/navigation/SectionItem";
 
 type DesktopNavProps = {
   navItems: NavItem[];
@@ -15,6 +15,7 @@ type DesktopNavProps = {
 const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
   const intl = useTranslations();
   const pathname = usePathname();
+  const scrolledAttr = scrolled ? "true" : "false";
 
   return (
     <NavigationMenu.Root className={styles.root}>
@@ -22,19 +23,8 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
         {navItems.map((item) => {
           const { id, type, translationKey } = item;
 
-          // ── Section — dropdown ──
           if (type === "section") {
-            const isActive = item.children.some(
-              (child) => pathname === child.href,
-            );
-            return (
-              <SectionDropdown
-                key={id}
-                item={item}
-                scrolled={scrolled}
-                isActive={isActive}
-              />
-            );
+            return <SectionItem key={id} item={item} scrolled={scrolled} />;
           }
 
           if (type === "signup") {
@@ -54,29 +44,29 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
             );
           }
 
-          // ── External link ──
           if (type === "external") {
             return (
               <NavigationMenu.Item key={id}>
-                <NavigationMenu.Link
-                  href={item.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={styles.link}
-                  data-scrolled={scrolled}
-                >
-                  {intl(translationKey)}
-                  <ExternalLink
-                    className={styles.externalIcon}
-                    aria-hidden
-                    size={12}
-                  />
+                <NavigationMenu.Link asChild>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={styles.link}
+                    data-scrolled={scrolledAttr}
+                  >
+                    {intl(translationKey)}
+                    <ExternalLink
+                      className={styles.externalIcon}
+                      aria-hidden
+                      size={12}
+                    />
+                  </a>
                 </NavigationMenu.Link>
               </NavigationMenu.Item>
             );
           }
 
-          // ── Regular page link ──
           const isActive = pathname === item.href;
           return (
             <NavigationMenu.Item key={id}>
@@ -85,7 +75,7 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
                   href={item.href}
                   className={styles.link}
                   data-active={isActive}
-                  data-scrolled={scrolled}
+                  data-scrolled={scrolledAttr}
                 >
                   {intl(translationKey)}
                 </Link>
@@ -94,11 +84,6 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
           );
         })}
       </NavigationMenu.List>
-
-      {/* Viewport — where dropdown Content renders into */}
-      <div className={styles.viewportWrapper}>
-        <NavigationMenu.Viewport className={styles.viewport} />
-      </div>
     </NavigationMenu.Root>
   );
 };

@@ -1,10 +1,9 @@
-
-/*.root {*/
-/*    position: relative;*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    height: 100%;*/
-/*}*/
+.root {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
 
 .list {
     display: flex;
@@ -20,6 +19,13 @@
     display: flex;
     align-items: center;
     height: 100%;
+    flex: 0 0 auto;
+}
+
+.itemRelative {
+    position: relative;
+    flex: 0 0 auto;
+    min-width: 0;
 }
 
 .link,
@@ -29,24 +35,25 @@
     background: transparent;
     border: none;
     margin: 0;
+    padding: 0;
     font-family: inherit;
     line-height: normal;
+    box-sizing: border-box;
+
     display: inline-flex;
     align-items: center;
     gap: var(--space-1);
+
     font-size: 0.8rem;
     font-weight: 400;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     text-decoration: none;
     white-space: nowrap;
-    padding: 0;
-    border-bottom: 1.5px solid transparent;
-    box-sizing: border-box;
 
+    border-bottom: 1.5px solid transparent;
     cursor: pointer;
 
-    /* Default — white, over dark hero */
     color: rgba(255, 255, 255, 0.75);
 
     transition:
@@ -99,10 +106,10 @@
 }
 
 .signup {
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-sizing: border-box;
     line-height: normal;
 
     font-size: 0.8rem;
@@ -110,6 +117,7 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     text-decoration: none;
+
     padding: 0 var(--space-5);
     height: 34px;
     border-radius: 20px;
@@ -135,44 +143,42 @@
     flex-shrink: 0;
 }
 
-.viewportWrapper {
+.dropdownContent {
     position: absolute;
-    top: 100%;
+    top: calc(100% + var(--space-3));
     left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    perspective: 2000px;
-    z-index: 200;
-}
-
-.viewport {
-    position: relative;
-    width: var(--radix-navigation-menu-viewport-width);
-    height: var(--radix-navigation-menu-viewport-height);
+    width: max-content;
+    min-width: 200px;
+    max-width: 320px;
     background: var(--background-primary);
-    border: 1px solid var(--border-default);
-    border-radius: 6px;
-    box-shadow: 0 8px 32px rgba(26, 24, 32, 0.12);
-    overflow: hidden;
-    margin-top: var(--space-2);
+    border-top: 1.5px solid var(--accent);
 
-    transition:
-            width var(--duration-base) var(--ease-default),
-            height var(--duration-base) var(--ease-default);
-
-    animation: viewportIn var(--duration-base) var(--ease-default);
+    padding: var(--space-2) 0;
+    z-index: 150;
 }
 
-@keyframes viewportIn {
-    from { opacity: 0; transform: translateY(-6px); }
+.dropdownContent[data-scrolled="true"] {
+    border-bottom: 1px solid var(--border-default);
+    border-left: 1px solid var(--border-default);
+    border-right: 1px solid var(--border-default);
+}
+
+.dropdownContent[data-state="open"] {
+    animation: dropdownIn var(--duration-base) var(--ease-default);
+}
+
+.dropdownContent[data-state="closed"] {
+    animation: dropdownOut var(--duration-fast) var(--ease-default);
+}
+
+@keyframes dropdownIn {
+    from { opacity: 0; transform: translateY(-4px); }
     to   { opacity: 1; transform: translateY(0); }
 }
 
-.dropdownContent {
-    padding: var(--space-3);
-    width: max-content;
-    min-width: 200px;
+@keyframes dropdownOut {
+    from { opacity: 1; transform: translateY(0); }
+    to   { opacity: 0; transform: translateY(-4px); }
 }
 
 .dropdownList {
@@ -181,17 +187,16 @@
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: var(--space-1);
 }
 
 .dropdownLink {
     display: block;
-    padding: var(--space-3) var(--space-4);
-    border-radius: 4px;
+    padding: var(--space-3) var(--space-5);
 
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 400;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     text-decoration: none;
     color: var(--text-secondary);
 
@@ -203,10 +208,12 @@
             border-color var(--duration-fast) var(--ease-default);
 }
 
-.dropdownLink:hover {
+.dropdownLink:hover,
+.dropdownLink:focus-visible {
     color: var(--accent);
     background-color: var(--accent-subtle);
     border-left-color: var(--accent);
+    outline: none;
 }
 
 .dropdownLink[data-active="true"] {
