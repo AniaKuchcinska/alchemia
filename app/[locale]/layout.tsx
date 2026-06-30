@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Montserrat, Jost } from "next/font/google";
 import "../globals.css";
-import {NextIntlClientProvider, hasLocale} from 'next-intl';
-import {notFound} from 'next/navigation';
-import {routing} from "@/i18n/routing";
-
+import { NextIntlClientProvider, hasLocale } from "next-intl";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import Navbar from "@/app/components/navigation/Navbar";
 
 const fontMontserrat = Montserrat({
   variable: "--font-montserrat",
@@ -21,29 +21,30 @@ export const metadata: Metadata = {
   description: "Szkoła tańca Alchemia we Wrześni",
 };
 
-export function generateStaticParams(){
+export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
 export default async function RootLayout({
-                                           children,
-                                           params
-                                         }: {
+  children,
+  params,
+}: {
   children: React.ReactNode;
-  params: Promise<{locale: string}>;
+  params: Promise<{ locale: string }>;
 }) {
-  const {locale} = await params;
+  const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
 
   return (
-      <html lang={locale}>
+    <html lang={locale}>
       <body>
-      <NextIntlClientProvider>
-        {children}
-      </NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <Navbar />
+          {children}
+        </NextIntlClientProvider>
       </body>
-      </html>
+    </html>
   );
 }
