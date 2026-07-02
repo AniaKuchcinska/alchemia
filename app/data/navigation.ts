@@ -138,7 +138,7 @@ export const navigation: NavItem[] = [
   },
   {
     id: "signup",
-    translationKey: "nav.signup",
+    translationKey: "nav.sign_up",
     type: "signup",
     href: GYMMANAGER_URL,
   },
