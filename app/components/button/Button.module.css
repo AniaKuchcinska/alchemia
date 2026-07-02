@@ -1,7 +1,4 @@
 .pill {
-    position: fixed;
-    bottom: var(--space-6);
-    right: var(--space-5);
     z-index: 90;
 
     display: inline-flex;
