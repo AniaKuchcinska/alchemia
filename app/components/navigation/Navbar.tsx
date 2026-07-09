@@ -33,7 +33,7 @@ const Navbar = () => {
         <MobileNav navItems={navigation} />
       </div>
       <div className={styles.desktop}>
-        <DesktopNav navItems={navigation} scrolled />
+        <DesktopNav navItems={navigation} scrolled={scrolled} />
       </div>
     </header>
   );

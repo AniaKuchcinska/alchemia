@@ -12,7 +12,6 @@ const dirname =
     ? __dirname
     : path.dirname(fileURLToPath(import.meta.url));
 
-// More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
   test: {
     projects: [
@@ -39,6 +38,11 @@ export default defineConfig({
           setupFiles: ["./vitest.setup.ts"],
           include: ["**/*.test.{ts,tsx}"],
           exclude: ["node_modules", ".storybook"],
+        },
+        resolve: {
+          alias: {
+            "@": path.resolve(dirname, "./"),
+          },
         },
       },
     ],

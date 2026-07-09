@@ -20,6 +20,7 @@ const MobileNav = ({ navItems }: NavItems) => {
       <Dialog.Trigger
         className={styles.button}
         aria-label={intl("common.open")}
+        data-testid="mobile-nav-open-trigger"
       >
         <Menu size={24} />
       </Dialog.Trigger>
@@ -49,7 +50,11 @@ const MobileNav = ({ navItems }: NavItems) => {
           </div>
 
           <nav className={styles.nav}>
-            <Accordion.Root type="multiple" className={styles.accordion}>
+            <Accordion.Root
+              type="single"
+              collapsible
+              className={styles.accordion}
+            >
               {navItems.map((item) => {
                 const { id, type, translationKey } = item;
                 if (type === "section") {
@@ -104,7 +109,7 @@ const MobileNav = ({ navItems }: NavItems) => {
                     >
                       {intl(translationKey)}
                       <ExternalLink
-                        className={styles.externalLink}
+                        className={styles.externalIcon}
                         aria-hidden
                       />
                     </a>
