@@ -1,0 +1,9 @@
+.next
+.storybook-static
+storybook-static
+out
+build
+node_modules
+coverage
+public/generated
+*.generated.*

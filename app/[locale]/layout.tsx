@@ -39,7 +39,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body>
+      <body className={`${fontMontserrat.variable} ${fontJost.variable}`}>
         <NextIntlClientProvider>
           <Navbar />
           {children}

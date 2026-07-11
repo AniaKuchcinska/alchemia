@@ -33,12 +33,6 @@ export type NavItem =
 
 export const navigation: NavItem[] = [
   {
-    id: "home",
-    translationKey: "nav.home",
-    type: "page",
-    href: "/",
-  },
-  {
     id: "about",
     translationKey: "nav.about",
     type: "section",
@@ -119,12 +113,6 @@ export const navigation: NavItem[] = [
     href: "/gallery",
   },
   {
-    id: "client_panel",
-    translationKey: "nav.client_panel",
-    type: "external",
-    href: "https://alchemia.gymmanager.io/account/login",
-  },
-  {
     id: "faq",
     translationKey: "nav.faq",
     type: "page",
@@ -135,6 +123,12 @@ export const navigation: NavItem[] = [
     translationKey: "nav.contact",
     type: "page",
     href: "/contact",
+  },
+  {
+    id: "client_panel",
+    translationKey: "nav.client_panel",
+    type: "external",
+    href: "https://alchemia.gymmanager.io/account/login",
   },
   {
     id: "signup",

@@ -1,3 +1,5 @@
+"use client";
+
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { NavItem } from "../../data/navigation";
 import { ExternalLink } from "lucide-react";
@@ -6,6 +8,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import styles from "./DesktopNav.module.css";
 import SectionItem from "@/app/components/navigation/SectionItem";
+import Button from "@/app/components/button/Button";
 
 type DesktopNavProps = {
   navItems: NavItem[];
@@ -15,7 +18,6 @@ type DesktopNavProps = {
 const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
   const intl = useTranslations();
   const pathname = usePathname();
-  const scrolledAttr = scrolled ? "true" : "false";
 
   return (
     <NavigationMenu.Root className={styles.root}>
@@ -31,14 +33,7 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
             return (
               <NavigationMenu.Item key={id}>
                 <NavigationMenu.Link asChild>
-                  <Link
-                    href={item.href}
-                    className={styles.signup}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {intl(translationKey)}
-                  </Link>
+                  <Button href={item.href} label={intl(translationKey)} />
                 </NavigationMenu.Link>
               </NavigationMenu.Item>
             );
@@ -52,8 +47,7 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.link}
-                    data-scrolled={scrolledAttr}
+                    className={`${styles.link} ${scrolled ? styles.linkScrolled : ""}`}
                   >
                     {intl(translationKey)}
                     <ExternalLink
@@ -73,9 +67,13 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
               <NavigationMenu.Link asChild active={isActive}>
                 <Link
                   href={item.href}
-                  className={styles.link}
-                  data-active={isActive}
-                  data-scrolled={scrolledAttr}
+                  className={[
+                    styles.link,
+                    scrolled ? styles.linkScrolled : "",
+                    isActive ? styles.linkActive : "",
+                  ]
+                    .filter(Boolean)
+                    .join(" ")}
                 >
                   {intl(translationKey)}
                 </Link>

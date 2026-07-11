@@ -9,6 +9,9 @@ const config: StorybookConfig = {
     "@storybook/addon-docs",
     "@storybook/addon-onboarding",
   ],
+  features: {
+    backgrounds: true,
+  },
   framework: "@storybook/nextjs-vite",
   core: {
     disableTelemetry: true,
