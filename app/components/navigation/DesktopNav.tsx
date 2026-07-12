@@ -33,7 +33,11 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
             return (
               <NavigationMenu.Item key={id}>
                 <NavigationMenu.Link asChild>
-                  <Button href={item.href} label={intl(translationKey)} />
+                  <Button
+                    href={item.href}
+                    label={intl(translationKey)}
+                    external
+                  />
                 </NavigationMenu.Link>
               </NavigationMenu.Item>
             );
