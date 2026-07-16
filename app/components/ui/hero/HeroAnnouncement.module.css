@@ -1,0 +1,57 @@
+.container {
+  position: relative;
+  width: 100%;
+  min-height: 7em;
+}
+
+.banner {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  font-size: clamp(var(--space-5), 6vw, var(--space-12));
+  font-weight: var(--font-normal);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wide);
+  color: var(--text-inverse);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+.current {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.entering {
+  animation: enterBanner 400ms ease forwards;
+}
+
+.leaving {
+  animation: leaveBanner 400ms ease forwards;
+}
+
+@keyframes enterBanner {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes leaveBanner {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
