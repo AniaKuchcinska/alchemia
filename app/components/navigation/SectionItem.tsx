@@ -10,10 +10,9 @@ import styles from "./DesktopNav.module.css";
 
 type SectionItemProps = {
   item: SectionNavItem;
-  scrolled: boolean;
 };
 
-const SectionItem = ({ item, scrolled }: SectionItemProps) => {
+const SectionItem = ({ item }: SectionItemProps) => {
   const intl = useTranslations();
   const pathname = usePathname();
 
@@ -22,11 +21,7 @@ const SectionItem = ({ item, scrolled }: SectionItemProps) => {
   return (
     <NavigationMenu.Item className={styles.itemRelative}>
       <NavigationMenu.Trigger
-        className={[
-          styles.trigger,
-          scrolled ? styles.triggerScrolled : "",
-          isActive ? styles.triggerActive : "",
-        ]
+        className={[styles.trigger, isActive ? styles.linkActive : ""]
           .filter(Boolean)
           .join(" ")}
       >

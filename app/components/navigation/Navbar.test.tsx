@@ -51,33 +51,6 @@ describe("Navbar", () => {
     expect(screen.getByRole("img").closest("a")).toHaveAttribute("href", "/");
   });
 
-  it("is not scrolled by default", () => {
-    render(<Default />);
-
-    expect(screen.getByRole("banner")).toHaveAttribute(
-      "data-scrolled",
-      "false",
-    );
-  });
-
-  it("becomes scrolled", async () => {
-    render(<Default />);
-
-    await simulateScroll(100);
-
-    expect(screen.getByRole("banner")).toHaveAttribute("data-scrolled", "true");
-  });
-
-  it("reverts to unscrolled when back at top", async () => {
-    render(<Default />);
-    await simulateScroll(100);
-    await simulateScroll(0);
-    expect(screen.getByRole("banner")).toHaveAttribute(
-      "data-scrolled",
-      "false",
-    );
-  });
-
   it("mobile menu starts closed", () => {
     renderMobileNav();
 

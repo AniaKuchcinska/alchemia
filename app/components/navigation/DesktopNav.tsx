@@ -12,10 +12,9 @@ import Button from "@/app/components/button/Button";
 
 type DesktopNavProps = {
   navItems: NavItem[];
-  scrolled: boolean;
 };
 
-const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
+const DesktopNav = ({ navItems }: DesktopNavProps) => {
   const intl = useTranslations();
   const pathname = usePathname();
 
@@ -26,7 +25,7 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
           const { id, type, translationKey } = item;
 
           if (type === "section") {
-            return <SectionItem key={id} item={item} scrolled={scrolled} />;
+            return <SectionItem key={id} item={item} />;
           }
 
           if (type === "signup") {
@@ -51,7 +50,7 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`${styles.link} ${scrolled ? styles.linkScrolled : ""}`}
+                    className={styles.link}
                   >
                     {intl(translationKey)}
                     <ExternalLink
@@ -71,11 +70,7 @@ const DesktopNav = ({ navItems, scrolled }: DesktopNavProps) => {
               <NavigationMenu.Link asChild active={isActive}>
                 <Link
                   href={item.href}
-                  className={[
-                    styles.link,
-                    scrolled ? styles.linkScrolled : "",
-                    isActive ? styles.linkActive : "",
-                  ]
+                  className={[styles.link, isActive ? styles.linkActive : ""]
                     .filter(Boolean)
                     .join(" ")}
                 >
