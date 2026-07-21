@@ -17,28 +17,9 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   parameters: {
     backgrounds: {
-      value: "dark",
-    },
-  },
-};
-
-export const DesktopScrolled: Story = {
-  parameters: {
-    backgrounds: {
       value: "light",
     },
   },
-  decorators: [
-    (Story) => {
-      Object.defineProperty(window, "scrollY", {
-        writable: true,
-        configurable: true,
-        value: 100,
-      });
-      window.dispatchEvent(new Event("scroll"));
-      return <Story />;
-    },
-  ],
 };
 
 export const MobileNavbarClosed: Story = {

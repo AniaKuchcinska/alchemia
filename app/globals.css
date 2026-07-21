@@ -8,7 +8,8 @@
   --accent-subtle: #efeffd;
 
   --text-primary: #111111;
-  --text-secondary: #666666;
+  --text-secondary: #222222;
+  --text-tertiary: #666666;
   --text-disabled: #aaaaaa;
   --text-inverse: #ffffff;
 
@@ -48,6 +49,9 @@
   --max-width-content: 1200px;
   --max-width-text: 680px;
   --max-width-narrow: 480px;
+
+  --dropdown-min-width: 11.25rem;
+  --dropdown-max-width: 17.5rem;
 
   --nav-height: 4.5rem;
 

@@ -21,7 +21,7 @@
 }
 
 .header[data-scrolled="true"] {
-  background-color: var(--bg-page);
+  background-color: var(--bg-surface);
   border-bottom: 1px solid var(--border-default);
   box-shadow: var(--shadow-nav);
 }
@@ -37,7 +37,6 @@
 }
 
 .header[data-scrolled="true"] .logo {
-  /* Dark logo on white nav */
   filter: none;
 }
 
@@ -49,11 +48,21 @@
   display: none;
 }
 
-@media (min-width: 48rem) {
+@media (min-width: 75rem) {
   .mobile {
     display: none;
   }
   .desktop {
     display: flex;
+  }
+
+  .header {
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-default);
+    box-shadow: var(--shadow-nav);
+  }
+
+  .logo {
+    filter: none;
   }
 }

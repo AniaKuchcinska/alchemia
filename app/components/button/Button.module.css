@@ -26,7 +26,6 @@
 .pill:hover {
   background-color: var(--text-inverse);
   color: var(--accent);
-  font-weight: var(--font-semibold);
 }
 
 .pill:active {
