@@ -4,21 +4,14 @@ import Button from "./Button";
 
 describe("Button", () => {
   it("renders external link with correct security attributes", () => {
-    render(
-      <Button
-        href={process.env.NEXT_PUBLIC_GYMMANAGER_URL!}
-        label="Sign up"
-        external
-      />,
-    );
+    const externalUrl = "https://example.com/signup";
+
+    render(<Button href={externalUrl} label="Sign up" external />);
 
     const link = screen.getByRole("link", { name: "Sign up" });
 
     expect(link).toBeInTheDocument();
-    expect(link).toHaveAttribute(
-      "href",
-      process.env.NEXT_PUBLIC_GYMMANAGER_URL,
-    );
+    expect(link).toHaveAttribute("href", externalUrl);
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
 
