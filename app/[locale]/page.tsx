@@ -1,28 +1,20 @@
+import Hero from "@/app/components/ui/hero/Hero";
+//import "hero.webp" from "/public/hero.webp";
+
 export default function Home() {
   return (
     <main>
-      <section
-        style={{
-          height: "100dvh",
-          background: "#1A1820",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          marginTop: `calc(var(--nav-height) * -1)`,
+      <Hero
+        title="Alchemia dance studio Wrzesnia"
+        banners={["Zapisy na sezon 2026/2027 sa otwarte", "Summer camp 2026"]}
+        background="/hero.webp"
+        backgroundType="image"
+        backgroundAlt="alchemia dance studio dancers"
+        cta={{
+          label: "Zapisz sie",
+          href: "https://alchemia.gymmanager.io/account/login",
         }}
-      >
-        <p
-          style={{
-            color: "rgba(255,255,255,0.3)",
-            fontSize: "0.75rem",
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-          }}
-        >
-          Hero placeholder to test
-        </p>
-      </section>
-
+      />
       <section
         style={{
           minHeight: "200vh",

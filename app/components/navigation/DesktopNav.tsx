@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import styles from "./DesktopNav.module.css";
 import SectionItem from "@/app/components/navigation/SectionItem";
-import Button from "@/app/components/button/Button";
+import Button from "@/app/components/ui/button/Button";
 
 type DesktopNavProps = {
   navItems: NavItem[];
