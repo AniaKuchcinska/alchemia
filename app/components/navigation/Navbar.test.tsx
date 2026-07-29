@@ -25,10 +25,10 @@ const simulateScroll = async (scrollY: number) => {
   });
 };
 
-const renderMobileNav = () =>
+const renderMobileNav = (scrolled = false) =>
   render(
     <NextIntlClientProvider locale="pl" messages={plMessages}>
-      <MobileNav navItems={navigation} />
+      <MobileNav navItems={navigation} scrolled={scrolled} />
     </NextIntlClientProvider>,
   );
 
@@ -49,6 +49,33 @@ describe("Navbar", () => {
   it("logo links to home", () => {
     render(<Default />);
     expect(screen.getByRole("img").closest("a")).toHaveAttribute("href", "/");
+  });
+
+  it("is not scrolled by default", () => {
+    render(<Default />);
+
+    expect(screen.getByRole("banner")).toHaveAttribute(
+      "data-scrolled",
+      "false",
+    );
+  });
+
+  it("becomes scrolled", async () => {
+    render(<Default />);
+
+    await simulateScroll(100);
+
+    expect(screen.getByRole("banner")).toHaveAttribute("data-scrolled", "true");
+  });
+
+  it("reverts to unscrolled when back at top", async () => {
+    render(<Default />);
+    await simulateScroll(100);
+    await simulateScroll(0);
+    expect(screen.getByRole("banner")).toHaveAttribute(
+      "data-scrolled",
+      "false",
+    );
   });
 
   it("mobile menu starts closed", () => {
@@ -79,26 +106,6 @@ describe("Navbar", () => {
     expect(screen.getByText(plMessages.nav.offer)).toBeInTheDocument();
 
     expect(screen.getByText(plMessages.nav.contact)).toBeInTheDocument();
-  });
-
-  it("opens and closes accordion sections", async () => {
-    const user = userEvent.setup();
-
-    renderMobileNav();
-
-    await user.click(screen.getByTestId("mobile-nav-open-trigger"));
-
-    await user.click(screen.getByText(plMessages.nav.about));
-
-    expect(screen.getByText(plMessages.nav.about_school)).toBeInTheDocument();
-
-    await user.click(screen.getByText(plMessages.nav.offer));
-
-    expect(
-      screen.queryByText(plMessages.nav.about_school),
-    ).not.toBeInTheDocument();
-
-    expect(screen.getByText(plMessages.nav.offer_kids)).toBeInTheDocument();
   });
 
   it("closes with Escape", async () => {

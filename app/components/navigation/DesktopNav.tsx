@@ -1,20 +1,14 @@
 "use client";
 
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import { NavItem } from "../../data/navigation";
-import { ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import styles from "./DesktopNav.module.css";
-import SectionItem from "@/app/components/navigation/SectionItem";
-import Button from "@/app/components/ui/button/Button";
+import { CircleUserRound } from "lucide-react";
+import { NavProps } from "@/app/data/navigation";
 
-type DesktopNavProps = {
-  navItems: NavItem[];
-};
-
-const DesktopNav = ({ navItems }: DesktopNavProps) => {
+const DesktopNav = ({ navItems, scrolled }: NavProps) => {
   const intl = useTranslations();
   const pathname = usePathname();
 
@@ -22,27 +16,21 @@ const DesktopNav = ({ navItems }: DesktopNavProps) => {
     <NavigationMenu.Root className={styles.root}>
       <NavigationMenu.List className={styles.list}>
         {navItems.map((item) => {
-          const { id, type, translationKey } = item;
+          const { id, translationKey, variant } = item;
 
-          if (type === "section") {
-            return <SectionItem key={id} item={item} />;
-          }
-
-          if (type === "signup") {
+          if (variant === "signup") {
             return (
               <NavigationMenu.Item key={id}>
                 <NavigationMenu.Link asChild>
-                  <Button
-                    href={item.href}
-                    label={intl(translationKey)}
-                    external
-                  />
+                  <Link href={item.href} className={styles.signupLink}>
+                    {intl(translationKey)}
+                  </Link>
                 </NavigationMenu.Link>
               </NavigationMenu.Item>
             );
           }
 
-          if (type === "external") {
+          if (variant === "external") {
             return (
               <NavigationMenu.Item key={id}>
                 <NavigationMenu.Link asChild>
@@ -50,14 +38,15 @@ const DesktopNav = ({ navItems }: DesktopNavProps) => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.link}
+                    title={intl("nav.client_panel_title")}
+                    className={[
+                      styles.clientPanel,
+                      scrolled ? styles.clientPanelScrolled : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
                   >
-                    {intl(translationKey)}
-                    <ExternalLink
-                      className={styles.externalIcon}
-                      aria-hidden
-                      size={12}
-                    />
+                    <CircleUserRound size={36} strokeWidth={1} />
                   </a>
                 </NavigationMenu.Link>
               </NavigationMenu.Item>
@@ -70,7 +59,12 @@ const DesktopNav = ({ navItems }: DesktopNavProps) => {
               <NavigationMenu.Link asChild active={isActive}>
                 <Link
                   href={item.href}
-                  className={[styles.link, isActive ? styles.linkActive : ""]
+                  aria-current={isActive ? "page" : undefined}
+                  className={[
+                    styles.link,
+                    scrolled ? styles.linkScrolled : "",
+                    isActive ? styles.linkActive : "",
+                  ]
                     .filter(Boolean)
                     .join(" ")}
                 >

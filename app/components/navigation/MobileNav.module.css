@@ -6,9 +6,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--accent);
+  color: var(--text-inverse);
   border-radius: var(--radius-md);
   transition: background-color var(--duration-fast) var(--ease-default);
+}
+
+.buttonScrolled {
+  color: var(--text-primary);
 }
 
 .button:hover {
@@ -39,22 +43,29 @@
 
 .content {
   position: fixed;
-  top: 0;
+  top: var(--nav-height);
   left: 0;
   right: 0;
+
   z-index: 201;
 
   background: var(--bg-page);
-  border-bottom: 0.0625rem solid var(--border-default);
+  border-bottom: 1px solid var(--border-default);
   box-shadow: var(--shadow-dropdown);
+
+  animation: menuIn var(--duration-base) var(--ease-default);
 }
 
-.content[data-state="open"] {
-  animation: slideDown var(--duration-slow) var(--ease-default);
-}
+@keyframes menuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
 
-.content[data-state="closed"] {
-  animation: slideUp var(--duration-base) var(--ease-default);
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes slideDown {
@@ -79,22 +90,7 @@
   }
 }
 
-.dialogHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-inline: var(--space-6);
-  height: var(--nav-height);
-  border-bottom: 0.0625rem solid var(--border-default);
-}
-
-.dialogLogo {
-  display: flex;
-  align-items: center;
-}
-
 .nav {
-  padding-block: var(--space-4) var(--space-6);
   overflow-y: auto;
   max-height: calc(100dvh - var(--nav-height));
 }
@@ -138,11 +134,27 @@
   font-weight: var(--font-medium);
 }
 
-.externalIcon {
-  width: 0.75rem;
-  height: 0.75rem;
-  transform: translateY(-1px);
-  color: var(--text-secondary);
+.signupLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  padding-block: var(--space-4);
+
+  background: var(--accent);
+  color: var(--text-inverse);
+
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.signupLink:hover {
+  background: var(--accent-hover);
 }
 
 .accordionItem {

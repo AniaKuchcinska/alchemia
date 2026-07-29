@@ -15,6 +15,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -24,17 +25,19 @@ const Navbar = () => {
         <Image
           src="/logo.svg"
           loading="eager"
-          alt={intl("nav.logo_alt")}
+          alt={intl("common.logo_alt")}
           width={100}
           height={20}
         />
       </Link>
-      <div className={styles.mobile}>
-        <MobileNav navItems={navigation} />
-      </div>
-      <div className={styles.desktop}>
-        <DesktopNav navItems={navigation} />
-      </div>
+      <nav aria-label={intl("nav.main_navigation")}>
+        <div className={styles.mobile}>
+          <MobileNav navItems={navigation} scrolled={scrolled} />
+        </div>
+        <div className={styles.desktop}>
+          <DesktopNav navItems={navigation} scrolled={scrolled} />
+        </div>
+      </nav>
     </header>
   );
 };
