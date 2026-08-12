@@ -39,6 +39,7 @@ const DesktopNav = ({ navItems, scrolled }: NavProps) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     title={intl("nav.client_panel_title")}
+                    aria-label={intl("nav.client_panel_title")}
                     className={[
                       styles.clientPanel,
                       scrolled ? styles.clientPanelScrolled : "",

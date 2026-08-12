@@ -15,7 +15,10 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: "Alchemia Dance Studio Wrzesnia",
+    title: {
+      primary: "Your dance school",
+      secondary: "Alchemia Wrzesnia",
+    },
     cta: {
       label: "Sign Up",
       href: "/signup",
@@ -23,7 +26,7 @@ export const Default: Story = {
     background: "/public/hero.webp",
     backgroundType: "image",
     backgroundAlt: "Alchemia Dance studio students dancing",
-    banners: [
+    announcements: [
       "Enrollment Open for 2026/2027 Season!",
       "Summer Camp subscriptions are open!",
     ],
@@ -33,6 +36,6 @@ export const Default: Story = {
 export const SingleAnnouncement: Story = {
   args: {
     ...Default.args,
-    banners: ["Enrollment Open for 2026/2027 Season!"],
+    announcements: ["Enrollment Open for 2026/2027 Season!"],
   },
 };

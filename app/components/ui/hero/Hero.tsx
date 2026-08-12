@@ -5,7 +5,10 @@ import Button from "../button/Button";
 import HeroAnnouncement from "@/app/components/ui/hero/HeroAnnouncement";
 
 type HeroProps = {
-  title: string;
+  title: {
+    primary: string;
+    secondary?: string;
+  };
   cta?: {
     label: string;
     href: string;
@@ -13,7 +16,7 @@ type HeroProps = {
   background: string;
   backgroundType: "image" | "video";
   backgroundAlt: string;
-  banners?: string[];
+  announcements?: string[];
 };
 
 const Hero = ({
@@ -22,7 +25,7 @@ const Hero = ({
   background,
   backgroundType,
   backgroundAlt,
-  banners,
+  announcements,
 }: HeroProps) => {
   return (
     <section className={styles.hero}>
@@ -42,7 +45,6 @@ const Hero = ({
           src={background}
           alt={backgroundAlt}
           fill
-          priority
           sizes="100vw"
         />
       )}
@@ -50,9 +52,21 @@ const Hero = ({
       <div className={styles.overlay} aria-hidden />
 
       <div className={styles.content}>
-        <h1 className={styles.title}>{title}</h1>
-        {banners && banners.length > 0 && (
-          <HeroAnnouncement announcements={banners} />
+        <h1
+          className={styles.title}
+          aria-label={
+            title.secondary
+              ? `${title.primary} ${title.secondary}`
+              : title.primary
+          }
+        >
+          <span className={styles.titlePrimary}>{title.primary}</span>
+          {title.secondary && (
+            <span className={styles.titleSecondary}>{title.secondary}</span>
+          )}
+        </h1>
+        {announcements && announcements.length > 0 && (
+          <HeroAnnouncement announcements={announcements} />
         )}
         {cta && (
           <div className={styles.heroCta}>

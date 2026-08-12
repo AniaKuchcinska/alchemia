@@ -38,7 +38,7 @@ export const HeroAnnouncement = ({ announcements }: HeroAnnouncementProps) => {
     <div className={styles.container}>
       {previous !== null && (
         <p
-          className={`${styles.banner} ${styles.leaving}`}
+          className={`${styles.announcements} ${styles.leaving}`}
           onAnimationEnd={handleExitAnimationEnd}
         >
           {announcements[previous]}
@@ -46,7 +46,7 @@ export const HeroAnnouncement = ({ announcements }: HeroAnnouncementProps) => {
       )}
 
       <p
-        className={`${styles.banner} ${previous !== null ? styles.entering : styles.current}`}
+        className={`${styles.announcements} ${previous !== null ? styles.entering : styles.current}`}
       >
         {announcements[current]}
       </p>

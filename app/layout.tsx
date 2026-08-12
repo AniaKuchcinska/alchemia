@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Montserrat, Jost } from "next/font/google";
+import { Syne, Jost } from "next/font/google";
 import "./globals.css";
 
-const fontMontserrat = Montserrat({
-  variable: "--font-montserrat",
+const fontSyne = Syne({
+  variable: "--font-Syne",
   subsets: ["latin"],
 });
 
@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pl">
-      <body className={`${fontMontserrat.variable} ${fontJost.variable}`}>
+      <body className={`${fontSyne.variable} ${fontJost.variable}`}>
         {children}
       </body>
     </html>

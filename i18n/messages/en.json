@@ -4,6 +4,12 @@
     "logo_alt": "Alchemia Dance Studio Wrzesnia",
     "open": "Open"
   },
+  "home": {
+    "hero_background_alt": "Alchemia dance studio dancers",
+    "hero_cta_label": "Sign Up",
+    "hero_title_primary": "Your dance school",
+    "hero_title_secondary": "Alchemia Września"
+  },
   "nav": {
     "about": "About us",
     "client_panel": "Client panel",
