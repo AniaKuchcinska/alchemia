@@ -12,6 +12,7 @@
   align-items: center;
 
   background-color: transparent;
+  backdrop-filter: blur(2px);
   border-bottom: 0.0625rem solid transparent;
 
   transition:

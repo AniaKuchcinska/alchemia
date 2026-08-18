@@ -4,13 +4,13 @@
   min-height: 7em;
 }
 
-.banner {
+.announcements {
   position: absolute;
   inset: 0;
   margin: 0;
   width: 100%;
   font-size: clamp(var(--space-5), 6vw, var(--space-12));
-  font-weight: var(--font-normal);
+  font-weight: var(--font-light);
   line-height: 1.2;
   text-transform: uppercase;
   letter-spacing: var(--tracking-wide);

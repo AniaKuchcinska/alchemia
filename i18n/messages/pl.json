@@ -4,12 +4,18 @@
     "logo_alt": "Alchemia Dance Studio Września",
     "open": "Otwórz"
   },
+  "home": {
+    "hero_background_alt": "Zespół i tańcerze Alchemii",
+    "hero_cta_label": "Zapisz się",
+    "hero_title_primary": "Twoja szkoła tańca",
+    "hero_title_secondary": "Alchemia Września"
+  },
   "nav": {
     "about": "O nas",
     "client_panel": "Panel klienta",
     "client_panel_title": "Zaloguj się",
     "contact": "Kontakt",
-    "faq": "Pytania i odpowiedzi",
+    "faq": "Najczęstsze pytania",
     "main_navigation": "Główna nawigacja",
     "offer": "Oferta",
     "pricing": "Cennik",

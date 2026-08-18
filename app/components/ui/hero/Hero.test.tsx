@@ -10,7 +10,9 @@ describe("Hero", () => {
   it("renders hero content", () => {
     render(<Default />);
     expect(
-      screen.getByRole("heading", { name: "Alchemia Dance Studio Wrzesnia" }),
+      screen.getByRole("heading", {
+        name: "Your dance school Alchemia Wrzesnia",
+      }),
     ).toBeInTheDocument();
   });
 

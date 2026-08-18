@@ -70,7 +70,7 @@
   --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
 
   --font-jost: "Jost", Arial, sans-serif;
-  --font-montserrat: "Montserrat", Arial, sans-serif;
+  --font-syne: "Syne", Arial, sans-serif;
 }
 
 *,
@@ -89,7 +89,7 @@ html {
 body {
   background: var(--bg-page);
   color: var(--text-primary);
-  font-family: var(--font-jost), Montserrat, Arial, Helvetica, sans-serif;
+  font-family: var(--font-jost), Inter, Arial, Helvetica, sans-serif;
   font-weight: 300;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -102,7 +102,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
+  font-family: var(--font-Syne), Montserrat, Arial, Helvetica, sans-serif;
   font-weight: var(--font-semibold);
   line-height: 1.2;
   color: var(--text-primary);

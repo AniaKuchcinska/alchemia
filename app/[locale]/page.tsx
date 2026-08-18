@@ -1,18 +1,33 @@
 import Hero from "@/app/components/ui/hero/Hero";
-//import "hero.webp" from "/public/hero.webp";
+import { getHomepageHero } from "@/sanity/lib/fetch";
+import { urlFor } from "@/sanity/lib/image";
+import { getTranslations } from "next-intl/server";
 
-export default function Home() {
+type HomeProps = {
+  params: Promise<{
+    locale: "pl" | "en";
+  }>;
+};
+
+const Home = async ({ params }: HomeProps) => {
+  const { locale } = await params;
+  const heroSanity = await getHomepageHero(locale);
+  const imageUrl = urlFor(heroSanity.background).url();
+  const intl = await getTranslations();
   return (
     <main>
       <Hero
-        title="Alchemia dance studio Wrzesnia"
-        banners={["Zapisy na sezon 2026/2027 sa otwarte", "Summer camp 2026"]}
-        background="/hero.webp"
+        title={{
+          primary: intl("home.hero_title_primary"),
+          secondary: intl("home.hero_title_secondary"),
+        }}
+        announcements={heroSanity.announcements}
+        background={imageUrl}
         backgroundType="image"
-        backgroundAlt="alchemia dance studio dancers"
+        backgroundAlt={intl("home.hero_background_alt")}
         cta={{
-          label: "Zapisz sie",
-          href: "https://alchemia.gymmanager.io/account/login",
+          label: intl("home.hero_cta_label"),
+          href: "/signup",
         }}
       />
       <section
@@ -28,4 +43,6 @@ export default function Home() {
       </section>
     </main>
   );
-}
+};
+
+export default Home;
